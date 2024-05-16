@@ -8,17 +8,18 @@ class queue:
     def __init__(self):
         self.front = None
         self.rear = None
+
     def enqueue(self, data):
-        if self.front is None:
+        if not self.front:
             self.front = self.rear = node(data)
         else:
             new_node = node(data)
             self.rear.next = new_node
             self.rear = new_node
-        return None
+        return self.display()
 
     def dequeue(self):
-        if self.front is None:
+        if not self.front:
             return None
         node = self.front
         if self.front == self.rear:
@@ -28,21 +29,32 @@ class queue:
         return node.data
 
     def peek(self):
-        if self.front is None:
+        if not self.front:
             return None
         return self.front.data
 
     def is_empty(self):
         return self.front is None
 
-    def main(self):
-        for i in [1, 2, 3, 4]:
-            self.enqueue(i)
-        data = self.dequeue()
-        peek_data = self.peek()
-        print(data)
-        print(peek_data)
+    def display(self):
+        cur_node = self.front
+        queue_list = []
+        while cur_node:
+            queue_list.append(cur_node.data)
+            cur_node = cur_node.next
+        return queue_list
 
 
-queue_test = queue()
-queue_test.main()
+
+def main():
+    queue_test = queue()
+    print(queue_test.peek())
+    for i in [1, 2, 3, 4]:
+        print(queue_test.enqueue(i))
+    data = queue_test.dequeue()
+    peek_data = queue_test.peek()
+    print(data)
+    print(peek_data)
+
+
+main()
