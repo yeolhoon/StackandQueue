@@ -40,10 +40,9 @@ class queue:
         cur_node = self.front
         queue_list = []
         while cur_node:
-            queue_list.append(cur_node.data)
+            queue_list.insert(0, cur_node.data)
             cur_node = cur_node.next
         return queue_list
-
 
 
 def main():
@@ -51,10 +50,10 @@ def main():
     print(queue_test.peek())
     for i in [1, 2, 3, 4]:
         print(queue_test.enqueue(i))
-    data = queue_test.dequeue()
-    peek_data = queue_test.peek()
-    print(data)
-    print(peek_data)
+    print("->", queue_test.display(), "->")
+    print("dequeue", queue_test.dequeue())
+    print("->", queue_test.display(), "->")
+    print("peek", queue_test.peek())
 
 
 main()

@@ -3,29 +3,29 @@ class stack:
         self.items = []
 
     def push(self, item):
-        self.items.append(item)
+        self.items.insert(0, item)
         return self.items
 
     def pop(self):
         if not self.is_empty():
-            return self.items.pop()
+            return self.items.pop(0)
 
     def peek(self):
         if not self.is_empty():
-            return self.items[-1]
+            return self.items[0]
 
     def is_empty(self):
         return len(self.items) == 0
 
-    def main(self):
-        print(self.push(1))
-        print(self.push(2))
-        print(self.push(3))
-        print(self.push(4))
+def main():
+    stack_array = stack()
+    for i in [1, 2, 3, 4]:
+        print(stack_array.push(i))
 
-        print(self.pop())
-        print(self.peek())
+    print("<->", stack_array.items)
+    print("pop", stack_array.pop())
+    print("<->", stack_array.items)
+    print("peek", stack_array.peek())
 
 
-stack_array = stack()
-stack_array.main()
+main()
